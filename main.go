@@ -2,7 +2,7 @@ package main
 
 import (
 	"bufio"
-	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -84,12 +84,12 @@ func main() {
 				scanner.Scan()
 				data = scanner.Text()
 				if strings.EqualFold(data, "exit") {
-					fmt.Println("Программа завершила работу!")
+					log.Println("Программа завершила работу!")
 					return
 				}
 				i, err := strconv.Atoi(data)
 				if err != nil {
-					fmt.Println("Программа обрабатывает только целые числа!")
+					log.Println("Программа обрабатывает только целые числа!")
 					continue
 				}
 				c <- i
@@ -179,7 +179,7 @@ func main() {
 		for {
 			select {
 			case data := <-c:
-				fmt.Printf("Обработаны данные: %d\n", data)
+				log.Printf("Обработаны данные: %d\n", data)
 			case <-done:
 				return
 			}
